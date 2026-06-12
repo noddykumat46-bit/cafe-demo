@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Espresso Noir — Luxury Coffee House</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  background:#0b0a08;
+  color:#f5f1e8;
+  font-family:Inter,sans-serif;
+  overflow-x:hidden;
+}
+
+/* HERO */
+.hero{
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  text-align:center;
+  background:
+    radial-gradient(circle at center, rgba(200,162,74,0.08), transparent 60%),
+    linear-gradient(to bottom,#0b0a08,#120f0c);
+}
+
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:64px;
+  letter-spacing:2px;
+}
+
+.hero p{
+  margin-top:15px;
+  opacity:0.8;
+}
+
+.btn{
+  margin-top:25px;
+  padding:12px 28px;
+  border:1px solid #c8a24a;
+  background:transparent;
+  color:#c8a24a;
+  cursor:pointer;
+  transition:0.4s;
+}
+
+.btn:hover{
+  background:#c8a24a;
+  color:#0b0a08;
+  transform:translateY(-3px);
+}
+
+/* SECTION */
+section{
+  padding:100px 10%;
+}
+
+/* STORY */
+.story{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+}
+
+.story h2{
+  font-family:'Playfair Display',serif;
+  font-size:42px;
+  margin-bottom:20px;
+}
+
+.story p{
+  opacity:0.75;
+  line-height:1.8;
+}
+
+/* MENU */
+.menu-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;
+}
+
+.card{
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(200,162,74,0.2);
+  padding:20px;
+  backdrop-filter:blur(10px);
+  transition:0.4s;
+}
+
+.card:hover{
+  transform:translateY(-8px);
+  border-color:#c8a24a;
+}
+
+/* STATS */
+.stats{
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+}
+
+.stat{
+  text-align:center;
+  flex:1;
+}
+
+.stat h3{
+  font-size:40px;
+  color:#c8a24a;
+}
+
+/* TESTIMONIALS */
+.testimonial{
+  background:rgba(255,255,255,0.03);
+  padding:40px;
+  border-left:3px solid #c8a24a;
+  font-style:italic;
+}
+
+/* CTA */
+.cta{
+  text-align:center;
+  background:linear-gradient(45deg,#120f0c,#0b0a08);
+  padding:120px 10%;
+}
+
+.cta h2{
+  font-family:'Playfair Display',serif;
+  font-size:48px;
+}
+
+/* FOOTER */
+footer{
+  padding:40px;
+  text-align:center;
+  opacity:0.6;
+  border-top:1px solid rgba(255,255,255,0.1);
+}
+
+@media(max-width:768px){
+  .story{grid-template-columns:1fr;}
+  .hero h1{font-size:40px;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="hero">
+  <div>
+    <h1>Espresso Noir</h1>
+    <p>Crafted in Silence. Served in Gold.</p>
+    <button class="btn">Explore Menu</button>
+  </div>
+</div>
+
+<section class="story">
+  <div>
+    <h2>Our Philosophy</h2>
+    <p>
+      Every cup is a ritual. Every roast is a story of precision, patience, and passion.
+      We source the rarest beans and transform them into liquid art.
+    </p>
+  </div>
+  <div>
+    <p>
+      Born in minimalism, refined through craftsmanship — Espresso Noir is not just coffee,
+      it is a sensory experience built for those who appreciate silence, depth, and luxury.
+    </p>
+  </div>
+</section>
+
+<section>
+  <h2 style="font-family:Playfair Display;font-size:40px;margin-bottom:40px;">Signature Menu</h2>
+  <div class="menu-grid">
+    <div class="card">Velvet Espresso</div>
+    <div class="card">Midnight Cappuccino</div>
+    <div class="card">Golden Latte</div>
+    <div class="card">Noir Cold Brew</div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="stat"><h3 class="count">120K</h3><p>Cups Served</p></div>
+  <div class="stat"><h3 class="count">12</h3><p>Years Crafting</p></div>
+  <div class="stat"><h3 class="count">35</h3><p>Bean Origins</p></div>
+</section>
+
+<section>
+  <h2 style="font-family:Playfair Display;font-size:40px;margin-bottom:30px;">Testimonials</h2>
+  <div class="testimonial">“The most refined coffee experience I’ve ever had.”</div>
+</section>
+
+<section class="cta">
+  <h2>Reserve Your Experience</h2>
+  <button class="btn">WhatsApp Us</button>
+</section>
+
+<footer>
+  © 2026 Espresso Noir — All Rights Reserved
+</footer>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.from(".hero h1",{opacity:0,y:40,duration:1});
+gsap.from(".hero p",{opacity:0,y:20,duration:1,delay:0.3});
+
+gsap.utils.toArray("section").forEach(sec=>{
+  gsap.from(sec,{
+    opacity:0,
+    y:50,
+    duration:1,
+    scrollTrigger:{
+      trigger:sec,
+      start:"top 80%"
+    }
+  });
+});
+
+document.querySelector(".btn").onclick=()=>{
+  window.scrollTo({top:document.body.scrollHeight,behavior:"smooth"});
+};
+</script>
+
+</body>
+</html>
