@@ -1,240 +1,1403 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Espresso Noir — Luxury Coffee House</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Berries — Where Coffee Becomes Art</title>
+
+<meta name="description" content="Berries Coffee — A premium cafe experience with handcrafted beverages and timeless atmosphere.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500&display=swap');
 
-*{margin:0;padding:0;box-sizing:border-box;}
-body{
-  background:#0b0a08;
-  color:#f5f1e8;
-  font-family:Inter,sans-serif;
-  overflow-x:hidden;
+/* ================= ROOT ================= */
+
+:root{
+--espresso:#120b07;
+--coffee:#2b170d;
+--brown:#5b351b;
+--gold:#d6a35d;
+--cream:#f8f1e7;
+--text:#24150d;
+--muted:#8b7764;
+--white:#ffffff;
+--glass:rgba(255,255,255,0.08);
 }
 
-/* HERO */
+
+/* ================= RESET ================= */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Inter',sans-serif;
+background:var(--cream);
+color:var(--text);
+overflow-x:hidden;
+}
+
+img{
+max-width:100%;
+display:block;
+}
+
+
+/* ================= NAVBAR ================= */
+
+header{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+z-index:999;
+padding:25px 7%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+transition:.4s;
+}
+
+header.scrolled{
+background:rgba(18,11,7,.85);
+backdrop-filter:blur(15px);
+padding:18px 7%;
+}
+
+.logo{
+font-family:'Cormorant Garamond',serif;
+font-size:2rem;
+color:var(--gold);
+letter-spacing:2px;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin-left:30px;
+font-size:.9rem;
+position:relative;
+}
+
+nav a::after{
+content:"";
+position:absolute;
+left:0;
+bottom:-8px;
+width:0;
+height:2px;
+background:var(--gold);
+transition:.3s;
+}
+
+nav a:hover::after{
+width:100%;
+}
+
+
+/* ================= HERO ================= */
+
 .hero{
-  height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  position:relative;
-  text-align:center;
-  background:
-    radial-gradient(circle at center, rgba(200,162,74,0.08), transparent 60%),
-    linear-gradient(to bottom,#0b0a08,#120f0c);
+height:100vh;
+min-height:700px;
+position:relative;
+display:flex;
+align-items:center;
+padding:0 8%;
+background:
+linear-gradient(
+rgba(18,11,7,.65),
+rgba(18,11,7,.85)
+),
+url("https://images.unsplash.com/photo-1495474472287-4d71bcdd2085")
+center/cover;
+}
+
+.hero-content{
+max-width:700px;
+color:white;
+animation:fadeUp 1.2s ease;
 }
 
 .hero h1{
-  font-family:'Playfair Display',serif;
-  font-size:64px;
-  letter-spacing:2px;
+font-family:'Cormorant Garamond',serif;
+font-size:clamp(3rem,8vw,6rem);
+line-height:1;
+font-weight:600;
+}
+
+.hero h1 span{
+color:var(--gold);
+font-style:italic;
 }
 
 .hero p{
-  margin-top:15px;
-  opacity:0.8;
+margin:25px 0;
+font-size:1.1rem;
+color:#ddd;
+max-width:500px;
+line-height:1.8;
 }
 
+
 .btn{
-  margin-top:25px;
-  padding:12px 28px;
-  border:1px solid #c8a24a;
-  background:transparent;
-  color:#c8a24a;
-  cursor:pointer;
-  transition:0.4s;
+display:inline-block;
+padding:15px 35px;
+border-radius:50px;
+background:var(--gold);
+color:#160d08;
+text-decoration:none;
+font-weight:600;
+margin-right:15px;
+transition:.4s;
 }
 
 .btn:hover{
-  background:#c8a24a;
-  color:#0b0a08;
-  transform:translateY(-3px);
+transform:translateY(-8px);
+box-shadow:0 20px 40px rgba(214,163,93,.3);
 }
 
-/* SECTION */
+
+.btn-outline{
+background:transparent;
+border:1px solid var(--gold);
+color:white;
+}
+
+
+/* ================= STORY ================= */
+
 section{
-  padding:100px 10%;
+padding:100px 8%;
 }
 
-/* STORY */
+
 .story{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:60px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:60px;
+align-items:center;
 }
 
-.story h2{
-  font-family:'Playfair Display',serif;
-  font-size:42px;
-  margin-bottom:20px;
+.story-image{
+border-radius:20px;
+overflow:hidden;
+}
+
+.story-image img{
+transition:.7s;
+}
+
+.story-image:hover img{
+transform:scale(1.08);
+}
+
+
+.section-title{
+font-family:'Cormorant Garamond',serif;
+font-size:3rem;
+color:var(--espresso);
+margin-bottom:20px;
 }
 
 .story p{
-  opacity:0.75;
-  line-height:1.8;
+line-height:1.9;
+color:#6b5848;
 }
 
-/* MENU */
-.menu-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:25px;
-}
 
-.card{
-  background:rgba(255,255,255,0.03);
-  border:1px solid rgba(200,162,74,0.2);
-  padding:20px;
-  backdrop-filter:blur(10px);
-  transition:0.4s;
-}
-
-.card:hover{
-  transform:translateY(-8px);
-  border-color:#c8a24a;
-}
-
-/* STATS */
 .stats{
-  display:flex;
-  justify-content:space-between;
-  flex-wrap:wrap;
-}
-
-.stat{
-  text-align:center;
-  flex:1;
+display:flex;
+gap:30px;
+margin-top:40px;
 }
 
 .stat h3{
-  font-size:40px;
-  color:#c8a24a;
+font-size:2rem;
+color:var(--gold);
+font-family:'Cormorant Garamond',serif;
 }
 
-/* TESTIMONIALS */
-.testimonial{
-  background:rgba(255,255,255,0.03);
-  padding:40px;
-  border-left:3px solid #c8a24a;
-  font-style:italic;
+.stat p{
+font-size:.8rem;
 }
 
-/* CTA */
-.cta{
-  text-align:center;
-  background:linear-gradient(45deg,#120f0c,#0b0a08);
-  padding:120px 10%;
+
+/* ================= ANIMATION ================= */
+
+@keyframes fadeUp{
+
+from{
+opacity:0;
+transform:translateY(40px);
 }
 
-.cta h2{
-  font-family:'Playfair Display',serif;
-  font-size:48px;
+to{
+opacity:1;
+transform:none;
 }
 
-/* FOOTER */
-footer{
-  padding:40px;
-  text-align:center;
-  opacity:0.6;
-  border-top:1px solid rgba(255,255,255,0.1);
 }
+
+
+/* ================= MOBILE ================= */
 
 @media(max-width:768px){
-  .story{grid-template-columns:1fr;}
-  .hero h1{font-size:40px;}
+
+nav{
+display:none;
 }
+
+.hero{
+padding:0 6%;
+}
+
+.story{
+grid-template-columns:1fr;
+}
+
+.stats{
+flex-wrap:wrap;
+}
+
+}
+
 </style>
+
 </head>
 
 <body>
 
-<div class="hero">
-  <div>
-    <h1>Espresso Noir</h1>
-    <p>Crafted in Silence. Served in Gold.</p>
-    <button class="btn">Explore Menu</button>
-  </div>
+<header id="site-header">
+
+<div class="logo">Berries</div>
+
+<nav>
+<a href="#hero">Home</a>
+<a href="#story">Story</a>
+<a href="#menu">Menu</a>
+<a href="#gallery">Gallery</a>
+<a href="#find-us">Visit</a>
+</nav>
+
+</header>
+
+
+<main>
+
+<section class="hero" id="hero">
+
+<div class="hero-content">
+
+<h1>
+Coffee Crafted
+<br>
+<span>With Soul</span>
+</h1>
+
+<p>
+A premium coffee destination where every cup tells a story.
+Handcrafted beverages, elegant atmosphere and unforgettable moments.
+</p>
+
+
+<a href="#menu" class="btn">Explore Menu</a>
+
+<a href="#find-us" class="btn btn-outline">Find Us</a>
+
 </div>
 
-<section class="story">
-  <div>
-    <h2>Our Philosophy</h2>
-    <p>
-      Every cup is a ritual. Every roast is a story of precision, patience, and passion.
-      We source the rarest beans and transform them into liquid art.
-    </p>
-  </div>
-  <div>
-    <p>
-      Born in minimalism, refined through craftsmanship — Espresso Noir is not just coffee,
-      it is a sensory experience built for those who appreciate silence, depth, and luxury.
-    </p>
-  </div>
 </section>
 
-<section>
-  <h2 style="font-family:Playfair Display;font-size:40px;margin-bottom:40px;">Signature Menu</h2>
-  <div class="menu-grid">
-    <div class="card">Velvet Espresso</div>
-    <div class="card">Midnight Cappuccino</div>
-    <div class="card">Golden Latte</div>
-    <div class="card">Noir Cold Brew</div>
-  </div>
+
+<section id="story">
+
+<div class="story">
+
+<div class="story-image">
+
+<img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0">
+
+</div>
+
+
+<div>
+
+<h2 class="section-title">
+Our Story
+</h2>
+
+<p>
+At Berries, coffee is more than a drink.
+It is a ritual created with carefully selected beans,
+passionate craftsmanship and a love for timeless cafe culture.
+</p>
+
+
+<div class="stats">
+
+<div class="stat">
+<h3>10+</h3>
+<p>Years Experience</p>
+</div>
+
+
+<div class="stat">
+<h3>50K+</h3>
+<p>Cups Served</p>
+</div>
+
+
+<div class="stat">
+<h3>4.9★</h3>
+<p>Customer Rating</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 </section>
 
-<section class="stats">
-  <div class="stat"><h3 class="count">120K</h3><p>Cups Served</p></div>
-  <div class="stat"><h3 class="count">12</h3><p>Years Crafting</p></div>
-  <div class="stat"><h3 class="count">35</h3><p>Bean Origins</p></div>
+<!-- ================= MENU SECTION ================= -->
+
+<section id="menu">
+
+<h2 class="section-title">
+Signature Menu
+</h2>
+
+
+<div class="menu-grid">
+
+
+<div class="menu-card reveal">
+
+<img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd">
+
+<div class="menu-info">
+
+<h3>Velvet Cappuccino</h3>
+
+<p>
+Rich espresso blended with silky milk foam.
+</p>
+
+<span>$6</span>
+
+</div>
+
+</div>
+
+
+
+<div class="menu-card reveal">
+
+<img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085">
+
+<div class="menu-info">
+
+<h3>Classic Espresso</h3>
+
+<p>
+Bold single-origin coffee with deep flavour.
+</p>
+
+<span>$5</span>
+
+</div>
+
+</div>
+
+
+
+
+<div class="menu-card reveal">
+
+<img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d">
+
+<div class="menu-info">
+
+<h3>Caramel Latte</h3>
+
+<p>
+Smooth latte with handmade caramel notes.
+</p>
+
+<span>$7</span>
+
+</div>
+
+</div>
+
+
+
+</div>
+
+
 </section>
 
-<section>
-  <h2 style="font-family:Playfair Display;font-size:40px;margin-bottom:30px;">Testimonials</h2>
-  <div class="testimonial">“The most refined coffee experience I’ve ever had.”</div>
+
+
+
+<!-- ================= CRAFT SECTION ================= -->
+
+
+<section id="craft" class="dark-section">
+
+
+<div class="craft-content">
+
+
+<h2 class="section-title light">
+The Art Of Brewing
+</h2>
+
+
+<p>
+Every bean is carefully selected, roasted and prepared
+to create a unique experience in every cup.
+</p>
+
+
+
+<div class="timeline">
+
+
+<div class="timeline-item">
+
+<h3>01 — Select</h3>
+
+<p>
+Premium beans sourced from trusted farms.
+</p>
+
+</div>
+
+
+
+<div class="timeline-item">
+
+<h3>02 — Roast</h3>
+
+<p>
+Balanced roasting for perfect aroma.
+</p>
+
+</div>
+
+
+
+<div class="timeline-item">
+
+<h3>03 — Serve</h3>
+
+<p>
+A handcrafted experience delivered to you.
+</p>
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
 </section>
 
-<section class="cta">
-  <h2>Reserve Your Experience</h2>
-  <button class="btn">WhatsApp Us</button>
+
+
+
+
+<!-- ================= GALLERY ================= -->
+
+
+<section id="gallery">
+
+
+<h2 class="section-title">
+Gallery
+</h2>
+
+
+
+<div class="gallery">
+
+
+<div class="gallery-item">
+<img src="https://images.unsplash.com/photo-1511920170033-f8396924c348">
+</div>
+
+
+<div class="gallery-item">
+<img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31">
+</div>
+
+
+<div class="gallery-item">
+<img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb">
+</div>
+
+
+<div class="gallery-item">
+<img src="https://images.unsplash.com/photo-1498804103079-a6351b050096">
+</div>
+
+
+
+</div>
+
+
 </section>
+
+
+
+
+
+<!-- ================= TESTIMONIALS ================= -->
+
+
+<section id="testimonials" class="dark-section">
+
+
+<h2 class="section-title light">
+What Guests Say
+</h2>
+
+
+
+<div class="reviews">
+
+
+<div class="review-card">
+
+
+<p>
+"The most beautiful cafe experience.
+The coffee and atmosphere are unforgettable."
+</p>
+
+
+<h4>
+— Sarah M.
+</h4>
+
+
+</div>
+
+
+
+<div class="review-card">
+
+
+<p>
+"Perfect place for meetings, relaxing
+and enjoying premium coffee."
+</p>
+
+
+<h4>
+— Daniel R.
+</h4>
+
+
+</div>
+
+
+
+
+<div class="review-card">
+
+
+<p>
+"Every detail feels luxurious and carefully designed."
+</p>
+
+
+<h4>
+— Emma L.
+</h4>
+
+
+</div>
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+<!-- ================= FIND US ================= -->
+
+
+<section id="find-us">
+
+
+<div class="location">
+
+
+<div>
+
+<h2 class="section-title">
+Visit Berries
+</h2>
+
+
+<p>
+123 Heritage Lane<br>
+Your City<br><br>
+
+Open Daily<br>
+07:00 AM — 10:00 PM
+</p>
+
+
+<br>
+
+
+<a class="btn" href="#">
+Open Google Maps
+</a>
+
+
+</div>
+
+
+
+<div class="map-box">
+
+
+<iframe
+src="https://maps.google.com/maps?q=cafe&t=&z=13&ie=UTF8&iwloc=&output=embed">
+</iframe>
+
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+<!-- ================= NEWSLETTER ================= -->
+
+
+<section id="newsletter" class="newsletter">
+
+
+<h2>
+Join The Berries Club
+</h2>
+
+
+<p>
+Get updates about new drinks and special events.
+</p>
+
+
+
+<form>
+
+<input type="email" placeholder="Your Email">
+
+
+<button>
+Subscribe
+</button>
+
+
+</form>
+
+
+
+</section>
+
+
+
+
+
+<!-- ================= FOOTER ================= -->
+
 
 <footer>
-  © 2026 Espresso Noir — All Rights Reserved
+
+
+<div class="logo">
+Berries
+</div>
+
+
+<p>
+Where Coffee Becomes Art.
+</p>
+
+
+<div class="socials">
+
+<a href="#">Instagram</a>
+
+<a href="#">Facebook</a>
+
+<a href="#">Contact</a>
+
+</div>
+
+
+<p class="copyright">
+© 2026 Berries Coffee. All Rights Reserved.
+</p>
+
+
 </footer>
 
+
+
+
+
+<style>
+
+
+/* ================= MENU STYLE ================= */
+
+
+.menu-grid{
+
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:30px;
+
+}
+
+
+.menu-card{
+
+background:white;
+border-radius:20px;
+overflow:hidden;
+transition:.5s;
+box-shadow:0 15px 40px rgba(0,0,0,.08);
+
+}
+
+
+.menu-card:hover{
+
+transform:translateY(-15px);
+
+}
+
+
+
+.menu-card img{
+
+height:280px;
+width:100%;
+object-fit:cover;
+
+}
+
+
+
+.menu-info{
+
+padding:25px;
+
+}
+
+
+.menu-info h3{
+
+font-family:'Cormorant Garamond',serif;
+font-size:2rem;
+
+}
+
+
+.menu-info span{
+
+color:var(--gold);
+font-size:1.3rem;
+
+}
+
+
+
+
+/* ================= DARK SECTION ================= */
+
+
+.dark-section{
+
+background:var(--espresso);
+color:white;
+
+}
+
+
+
+.light{
+
+color:white;
+
+}
+
+
+
+.craft-content p{
+
+color:#d5c7b7;
+max-width:600px;
+
+}
+
+
+
+.timeline{
+
+margin-top:40px;
+
+}
+
+
+
+.timeline-item{
+
+border-left:2px solid var(--gold);
+padding:20px;
+margin-bottom:20px;
+
+}
+
+
+
+
+/* ================= GALLERY ================= */
+
+
+.gallery{
+
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+
+}
+
+
+
+.gallery-item{
+
+overflow:hidden;
+border-radius:20px;
+
+}
+
+
+
+.gallery-item img{
+
+height:300px;
+width:100%;
+object-fit:cover;
+transition:.6s;
+
+}
+
+
+
+.gallery-item:hover img{
+
+transform:scale(1.1);
+
+}
+
+
+
+
+
+/* ================= REVIEWS ================= */
+
+
+.reviews{
+
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:30px;
+
+}
+
+
+
+.review-card{
+
+background:rgba(255,255,255,.08);
+padding:35px;
+border-radius:20px;
+
+}
+
+
+.review-card p{
+
+color:#ddd;
+line-height:1.8;
+
+}
+
+
+
+.review-card h4{
+
+margin-top:20px;
+color:var(--gold);
+
+}
+
+
+
+
+/* ================= LOCATION ================= */
+
+
+.location{
+
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:50px;
+align-items:center;
+
+}
+
+
+
+.map-box iframe{
+
+width:100%;
+height:350px;
+border:0;
+border-radius:20px;
+
+}
+
+
+
+
+/* ================= NEWSLETTER ================= */
+
+
+.newsletter{
+
+background:var(--coffee);
+color:white;
+text-align:center;
+
+}
+
+
+
+.newsletter h2{
+
+font-family:'Cormorant Garamond',serif;
+font-size:3rem;
+
+}
+
+
+
+.newsletter form{
+
+margin-top:30px;
+
+}
+
+
+
+.newsletter input{
+
+padding:16px;
+border-radius:50px;
+border:none;
+width:280px;
+
+}
+
+
+
+.newsletter button{
+
+padding:16px 30px;
+border:none;
+border-radius:50px;
+background:var(--gold);
+
+}
+
+
+
+
+/* ================= FOOTER ================= */
+
+
+footer{
+
+background:#080503;
+color:white;
+text-align:center;
+padding:50px;
+
+}
+
+
+.socials a{
+
+color:var(--gold);
+margin:15px;
+text-decoration:none;
+
+}
+
+
+.copyright{
+
+margin-top:30px;
+color:#777;
+
+}
+
+
+
+
+
+@media(max-width:900px){
+
+.menu-grid,
+.reviews,
+.gallery,
+.location{
+
+grid-template-columns:1fr;
+
+}
+
+
+.gallery-item img{
+
+height:250px;
+
+}
+
+
+}
+
+</style>
+
 <script>
-gsap.registerPlugin(ScrollTrigger);
 
-gsap.from(".hero h1",{opacity:0,y:40,duration:1});
-gsap.from(".hero p",{opacity:0,y:20,duration:1,delay:0.3});
 
-gsap.utils.toArray("section").forEach(sec=>{
-  gsap.from(sec,{
-    opacity:0,
-    y:50,
-    duration:1,
-    scrollTrigger:{
-      trigger:sec,
-      start:"top 80%"
-    }
-  });
+// ================= NAVBAR SCROLL EFFECT =================
+
+
+const header = document.getElementById("site-header");
+
+
+window.addEventListener("scroll",()=>{
+
+if(window.scrollY > 50){
+
+header.classList.add("scrolled");
+
+}
+
+else{
+
+header.classList.remove("scrolled");
+
+}
+
 });
 
-document.querySelector(".btn").onclick=()=>{
-  window.scrollTo({top:document.body.scrollHeight,behavior:"smooth"});
+
+
+
+// ================= SCROLL REVEAL ANIMATION =================
+
+
+const revealElements = document.querySelectorAll(
+".menu-card, .gallery-item, .review-card, .timeline-item"
+);
+
+
+
+const observer = new IntersectionObserver((entries)=>{
+
+
+entries.forEach(entry=>{
+
+
+if(entry.isIntersecting){
+
+
+entry.target.style.opacity="1";
+
+entry.target.style.transform="translateY(0)";
+
+
+}
+
+
+});
+
+
+},{
+
+threshold:.15
+
+});
+
+
+
+revealElements.forEach(el=>{
+
+
+el.style.opacity="0";
+
+el.style.transform="translateY(50px)";
+
+el.style.transition="all .8s ease";
+
+
+observer.observe(el);
+
+
+});
+
+
+
+
+
+// ================= SMOOTH NAVIGATION =================
+
+
+document.querySelectorAll("nav a").forEach(link=>{
+
+
+link.addEventListener("click",(e)=>{
+
+
+const target = document.querySelector(
+link.getAttribute("href")
+);
+
+
+if(target){
+
+
+e.preventDefault();
+
+
+target.scrollIntoView({
+
+behavior:"smooth"
+
+});
+
+
+}
+
+
+});
+
+
+});
+
+
+
+
+
+// ================= MAGNETIC BUTTON EFFECT =================
+
+
+const buttons = document.querySelectorAll(".btn");
+
+
+
+buttons.forEach(btn=>{
+
+
+btn.addEventListener("mousemove",(e)=>{
+
+
+const rect = btn.getBoundingClientRect();
+
+
+const x = e.clientX - rect.left - rect.width/2;
+
+const y = e.clientY - rect.top - rect.height/2;
+
+
+
+btn.style.transform =
+`translate(${x*.15}px,${y*.15}px)`;
+
+
+});
+
+
+
+btn.addEventListener("mouseleave",()=>{
+
+
+btn.style.transform="translate(0,0)";
+
+
+});
+
+
+});
+
+
+
+
+
+// ================= IMAGE PARALLAX =================
+
+
+
+window.addEventListener("scroll",()=>{
+
+
+const hero = document.querySelector(".hero");
+
+
+let offset = window.pageYOffset;
+
+
+hero.style.backgroundPositionY =
+offset * 0.4 + "px";
+
+
+});
+
+
+
+
+
+// ================= COUNTER ANIMATION =================
+
+
+const counters = document.querySelectorAll(".stat h3");
+
+
+
+counters.forEach(counter=>{
+
+
+let text = counter.innerText;
+
+
+let number = parseInt(text);
+
+
+
+if(!isNaN(number)){
+
+
+counter.innerText="0+";
+
+
+let count=0;
+
+
+const update=()=>{
+
+
+if(count < number){
+
+
+count++;
+
+
+counter.innerText=count+"+";
+
+
+setTimeout(update,80);
+
+
+}
+
+
+else{
+
+
+counter.innerText=text;
+
+
+}
+
+
 };
+
+
+const counterObserver =
+new IntersectionObserver((entries)=>{
+
+
+if(entries[0].isIntersecting){
+
+
+update();
+
+counterObserver.disconnect();
+
+
+}
+
+
+});
+
+
+
+counterObserver.observe(counter);
+
+
+
+}
+
+
+
+});
+
+
+
 </script>
 
+
 </body>
+
 </html>
